@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { useAuth } from "./context/AuthContext";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import Test from "./pages/Test";
+import Results from "./pages/Results";
+import Login from "./pages/Login";
+import MyResults from "./pages/MyResults";
+import NotFound from "./pages/NotFound";
+import "./styles/App.css";
 
 function App() {
+  const { user, logout } = useAuth();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <nav className="nav-container">
+        <div className="nav-links">
+          <Link to="/">Home</Link>
+          {user ? (
+            <>
+              <Link to="/test">Take Test</Link>
+              <Link to="/my-results">My Results</Link>
+              <button className="logout-button" onClick={logout}>Logout</button>
+              <span className="user-info">{user.email ? user.email : "Guest"}</span>
+            </>
+          ) : (
+            <Link to="/login">Login</Link>
+          )}
+        </div>
+      </nav>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/test" element={<Test />} />
+          <Route path="/results" element={<Results />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/my-results" element={<MyResults />} />
+          <Route path="*" element={<NotFound />} /> {/* Catch-all route */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

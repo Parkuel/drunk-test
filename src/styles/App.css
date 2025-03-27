@@ -1,0 +1,52 @@
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    padding: 15px;
+    width: 100%;
+    padding: 15px;
+}
+  
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 8px 12px;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+  }
+  
+  .logout-button {
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 0.9rem; /* Smaller button */
+    padding: 10px 10px; /* Reduce padding */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .logout-button:hover {
+    background-color: #cc0000;
+  }
+  
+  .user-info {
+    color: white;
+    font-size: 0.9rem;
+    margin-left: auto; /* Pushes the user info to the far right */
+    padding-right: 15px; /* Adds some spacing from the right edge */
+    position: absolute;
+    right: 20px;
+  }
